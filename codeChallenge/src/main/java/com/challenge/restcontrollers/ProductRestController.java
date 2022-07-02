@@ -39,7 +39,7 @@ public class ProductRestController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity delete(@RequestParam Long id){
-        return  productService.delete(id);
+    public ResponseEntity delete(@RequestParam Long pid, @RequestParam Long uid){
+        return  productService.delete(pid,uid);
     }
 }

@@ -52,13 +52,27 @@ public class ProductService {
         Map<REnum,Object> hashMap = new LinkedHashMap<>();
         try{
             Optional<Product> optionalProduct = productRepository.findById(product.getId());
-            if(optionalProduct.isPresent()){
+            Long uid= optionalProduct.get().getUser().getId();
+            List<Product> products=productRepository.findByUser_IdEquals(uid);
+            boolean status = false;
+
+            for (Product item: products){
+                if (uid==product.getUser().getId()){
+                    status=true;
+                    break;
+                }
+            }
+            if(status){
+
                 productRepository.saveAndFlush(product);
-                hashMap.put(REnum.result, product);
                 hashMap.put(REnum.status, true);
+                hashMap.put(REnum.message, "Product update success!");
+                hashMap.put(REnum.result, product);
+
                 return new  ResponseEntity(hashMap, HttpStatus.OK);
             }else{
                 hashMap.put(REnum.status, false);
+                hashMap.put(REnum.message, "Product or user is null");
                 return new  ResponseEntity(hashMap, HttpStatus.BAD_REQUEST);
             }
         }catch (Exception ex){
@@ -69,14 +83,22 @@ public class ProductService {
 
     }
 
-    public ResponseEntity<Map<REnum,Object>> delete(Long id){
+    public ResponseEntity<Map<REnum,Object>> delete(Long pid,Long uid ){
         Map<REnum,Object> hashMap =new LinkedHashMap<>();
         try {
+            Optional<Product> optionalProduct = productRepository.findById(pid);
+            Long userid= optionalProduct.get().getUser().getId();
 
-            productRepository.deleteById(id);
-            hashMap.put(REnum.status,true);
-            hashMap.put(REnum.message,"product delete success");
-            return new ResponseEntity<>(hashMap, HttpStatus.OK);
+            if (userid==uid){
+                productRepository.deleteById(pid);
+                hashMap.put(REnum.status,true);
+                hashMap.put(REnum.message,"product delete success");
+                return new ResponseEntity<>(hashMap, HttpStatus.OK);
+            }else{
+                hashMap.put(REnum.status,false);
+                hashMap.put(REnum.message,"This product is not yours, you cannot delete it.");
+                return new ResponseEntity<>(hashMap, HttpStatus.OK);
+            }
 
         }catch (Exception ex){
             hashMap.put(REnum.status,false);

@@ -39,8 +39,8 @@ public class User {
             regexp = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9\\s]).{6,}")
     private String password;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Product> productList;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL ) //cascade = CascadeType.ALL
+//    private List<Product> productList;
 
 }

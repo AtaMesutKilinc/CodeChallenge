@@ -36,7 +36,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n     \"firstName\":\"sad\",\r\n    \"lastName\":\"user33\",\r\n    \"phone\":\"05319718888\",\r\n    \"email\":\"adana@mail.com\",\r\n    \"password\":\"AA.bb5\"\r\n}",
+							"raw": "{\r\n    \"firstName\":\"tuncer\",\r\n    \"lastName\":\"bilmem\",\r\n    \"phone\":\"05319718888\",\r\n    \"email\":\"tuncer@mail.com\",\r\n    \"password\":\"AA.bb5\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -182,7 +182,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"productName\":\"product999\",\r\n    \"detail\":\"product88\",\r\n    \"price\":781,\r\n    \"stockQuantity\":15,\r\n    \"user\":{\r\n        \"id\":5\r\n    }\r\n}",
+							"raw": "{\r\n    \"productName\":\"ewewr\",\r\n    \"detail\":\"ewrewr\",\r\n    \"price\":781,\r\n    \"stockQuantity\":15,\r\n    \"user\":{\r\n        \"id\":11\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,6 +209,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n            \"id\": 16,\r\n            \"productName\": \"aaaa\",\r\n            \"detail\": \"ewrewr\",\r\n            \"price\": 781,\r\n            \"stockQuantity\": 15,\r\n            \"user\": {\r\n                \"id\": 2,\r\n                \"firstName\": \"tuncer\",\r\n                \"lastName\": \"bilmem\",\r\n                \"phone\": \"05319718888\",\r\n                \"email\": \"tuncer21@mail.com\",\r\n                \"password\": \"AA.bb5\"\r\n            }\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8093/product/update",
 							"protocol": "http",
